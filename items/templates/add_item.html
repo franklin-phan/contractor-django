@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block content %}
-    <form action="{% url 'submit-pantry' %}" class="new_pantry" method="POST">
+    <form action="{% url 'submit-item' %}" class="new_pantry" method="POST">
         {% csrf_token %}
         <label>
             Food Name:

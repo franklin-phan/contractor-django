@@ -23,7 +23,7 @@ class Item(models.Model):
     is_public = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.title
+        return self.food_name
 
     def get_absolute_url(self):
         """ Returns a fully-qualified path for a page (/my-new-item-page). """
@@ -33,7 +33,7 @@ class Item(models.Model):
     def save(self, *args, **kwargs):
         """ Creates a URL safe slug automatically when a new a page is created. """
         if not self.pk:
-            self.slug = slugify(self.title, allow_unicode=True)
+            self.slug = slugify(self.food_name, allow_unicode=True)
 
         # Call save on the superclass.
-        return super(Page, self).save(*args, **kwargs)
+        return super(Item, self).save(*args, **kwargs)

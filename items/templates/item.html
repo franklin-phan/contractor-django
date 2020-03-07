@@ -8,10 +8,10 @@
       <p>{{ item.description|linebreaksbr }}</p>
       <hr>
       {% if item.author == user%}
-      <a href="{% url 'item-update-page' page.slug %}" style="margin-right:10px;">Update</a>
-      <a href="{% url 'item-delete-page' page.slug %}" style="margin-right:10px;">Delete</a>
+      <a href="{% url 'item-update-page' item.slug %}" style="margin-right:10px;">Update</a>
+      <a href="{% url 'item-delete-page' item.slug %}" style="margin-right:10px;">Delete</a>
       {% endif %}
-      <a href="{% url 'pantry-list-page' %}">Back to List</a>
+      <a href="{% url 'item-list-page' %}">Back to List</a>
     </div>
   </div>
 {% endblock %}

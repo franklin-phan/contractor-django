@@ -33,7 +33,7 @@ class ItemDetailView(DetailView):
 
     def get(self, request, slug):
         """ Returns a specific item by slug. """
-        item = get_object_or_404(Item, slug=slug)
+        item = self.get_queryset().get(slug__iexact=slug)        
         return render(request, 'item.html', {
           'item': item
         })
@@ -55,7 +55,7 @@ class ItemNew(CreateView):
       print(form)
       if form.is_valid():
         item = form.save()
-        return HttpResponseRedirect(reverse('items-details-page', args=[item.slug] ))
+        return HttpResponseRedirect(reverse('item-details-page', args=[item.slug] ))
       else:
         return render(request, 'add_item.html', {
         'item_form': form,
@@ -74,7 +74,7 @@ class ItemUpdate(UpdateView):
       if form.is_valid():
         form.save()
         print(form)
-        return HttpResponseRedirect(reverse('pantry-details-page', args=[slug] ))
+        return HttpResponseRedirect(reverse('item-details-page', args=[slug] ))
       else:
         return render(request, 'items/item_update_form.html', {
           'form': form,
@@ -82,4 +82,4 @@ class ItemUpdate(UpdateView):
 
 def delete_object(request, slug):
   Item.objects.filter(slug=slug).delete()
-  return HttpResponseRedirect(reverse('pantry-list-page'))
+  return HttpResponseRedirect(reverse('item-list-page'))
