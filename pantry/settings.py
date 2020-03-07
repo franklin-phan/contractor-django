@@ -25,7 +25,7 @@ SECRET_KEY = '%@-wq5myhu!8ph3&-ejj7$n4xp%)c_5v&xg5i-!fs_d_&y95()'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','https://pantry-django-fp.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1','pantry-django-fp.herokuapp.com']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
+    'accounts',
     'items.apps.ItemsConfig',
 ]
 

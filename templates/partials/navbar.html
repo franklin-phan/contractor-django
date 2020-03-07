@@ -10,7 +10,7 @@
             <form class="form-inline ml-auto">
               {% if user.is_authenticated %}
                 <div class="greet">Hello, <strong>{{ request.user }}</strong>!</div>
-                <a href="{% url 'submit-bitem' %}" class="btn btn-success ml-4">New Pantry Item</a>
+                <a href="{% url 'submit-item' %}" class="btn btn-success ml-4">New Pantry Item</a>
                 <a href="{% url 'logout' %}" class="btn btn-danger ml-2">Log Out</a>
               {% else %}
                 <a href="{% url 'login' %}" class="btn btn-secondary ml-2">Log In</a>
