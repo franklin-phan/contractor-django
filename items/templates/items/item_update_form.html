@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<style>
+
+    .new_item {
+        display: flex;
+        flex-direction: column;
+    }
+    .new_item button {
+        width:75px;
+        border-radius: 12px;
+        background-color: rgba(146, 221, 250, 0.925);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <form class="new_item" method="POST">
+        {% csrf_token %}
+        {% if message %}
+        <p>{{message}}</p>
+        {% endif %}
+        <label >
+            Food Name: 
+            {{form.food_name}}
+        </label>
+        <label >
+            Description: 
+            {{form.description}}
+        </label>
+        <label >
+            Public: 
+            {{form.is_public}}
+        </label>
+        <!-- {{ form.as_p}} -->
+        <button type="submit">Save</button>
+    </form>
+
+{% endblock %}

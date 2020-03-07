@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if user.is_authenticated %}
+    <h3>Your Pantry Items {% if user_items %}<small class="text-muted">({{ user_items|length }} Item{{ user_itesms|length|pluralize:"s" }})</small>{% endif %}</h3>
+    <hr>
+    {% if user_items %}
+      <div class="card-columns">
+        {% for item in user_items %}
+          {% include "partials/card.html" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="alert alert-primary" role="alert">No items to display.</div>
+    {% endif %}
+  {% endif %}
+  <h3>Items {% if all_items %}<small class="text-muted">({{ all_items|length }} Item{{ all_items|length|pluralize:"s" }})</small>{% endif %}</h3>
+  <hr>
+  {% if all_items %}
+    <div class="card-columns">
+      {% for item in all_items %}
+        {% if item.is_public is True %}
+          {% include "partials/card.html" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-primary" role="alert">No items to display.</div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% load static %}
+<div class="card mb-3">
+  <h5 class="card-header ">{{ item.food_name }}<small style="margin-left:5px;font-family: 'Sofia'">@{{ item.author.username }}</small></h5>
+  <div class="card-body border-dark">
+    <p class="card-text text-dark">
+      {{ item.description|truncatewords_html:30 }}
+      <hr>
+      
+      <div class="text-right">
+        {% if item.author == user %}
+        <a href="{% url 'item-update-page' page.slug %}" style="margin-right:10px;">Update</a>
+        <a href="{% url 'item-delete-page' page.slug %}" style="margin-right:10px;">Delete</a>
+        {% endif %}
+        <a href="{% url 'item-details-page' page.slug %}" title="Read More">Read More</a>
+      </div>
+  </div>
+  <div class="card-footer">
+    <small>Public: {% if page.is_public %}Yes {% else %} No {% endif %}</small>
+    <br>
+    <small class="text-muted">Last updated {{ item.modified|date:"SHORT_DATETIME_FORMAT" }} PST.</small>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<style>
+
+    .new_blog {
+        display: flex;
+        flex-direction: column;
+    }
+    .new_blog button {
+        width:75px;
+        border-radius: 12px;
+        background-color: rgba(146, 221, 250, 0.925);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'submit-pantry' %}" class="new_pantry" method="POST">
+        {% csrf_token %}
+        <label>
+            Food Name:
+            {{ item_form.food_name }}
+        </label>
+            Content:
+            {{ item_form.description }}
+        <label>
+
+        </label>
+            
+        <label>
+            Make it public:
+            {{ item_form.is_public }}
+        </label>
+            
+        
+        <button type="submit">
+            Submit
+        </button>
+    </form>
+
+{% endblock %}
